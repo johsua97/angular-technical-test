@@ -1,14 +1,25 @@
-<div class="modal-header">
-    <h4 class="modal-title">Detalles del Usuario</h4>
-    <button type="button" class="close" (click)="bsModalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>Nombre: {{ userLogin}}</p>
-    <p>ID: {{ userId }}</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Cerrar</button>
+<div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Para dispositivos grandes -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detalles del Usuario</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <img [src]="userData?.avatar_url" class="img-thumbnail rounded-circle">
+          </div>
+          <div class="col-12 col-md-8">
+            <p><strong>ID:</strong> {{ userData?.id }}</p>
+            <p><strong>Usuario:</strong> {{ userData?.login }}</p>
+            <p><strong>Compañía:</strong> {{userData?.company || 'No tiene'}}</p>
+            <p><strong>Ubicación:</strong> {{userData?.location || 'No tiene'}}</p>
+            <p><strong>Bio:</strong> {{ userData?.bio || 'No tiene' }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Cerrar</button>
+      </div>
+    </div>
   </div>
   

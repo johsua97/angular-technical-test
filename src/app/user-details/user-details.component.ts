@@ -18,7 +18,6 @@ export class UserDetailsComponent {
     this.http.get(`https://api.github.com/users/${this.userLogin}`)
       .subscribe((data: any) => {
         this.userData = data;
-        console.log('datos del usuario:', this.userData);
       });
   }
 }
