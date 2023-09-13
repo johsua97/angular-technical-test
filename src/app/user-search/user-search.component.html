@@ -1,17 +1,43 @@
 <div class="container">
     <div class="row">
-      <div class="col-lg-6 col-md-8 col-sm-10 offset-lg-3 offset-md-2 offset-sm-1">
-        <div class="d-flex align-items-center mb-3">
-          <i class="fa fa-github fa-4x mr-5" style="margin-right: 20px;"></i>
-          <p class="my-0" style="font-size: 30px; font-family: 'Your-Font-Family';">Buscador de usuarios de GitHub</p>
+      <div class="col-lg-8 col-md-10 col-sm-12 offset-lg-2 offset-md-1">
+        <div class="text-center mb-4">
+            <i class="fa fa-github fa-4x mr-5"></i>
+          <h1 class="h3">Buscador de usuarios de GitHub</h1>
         </div>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese un nombre de usuario" [(ngModel)]="searchText">
-            <div class="input-group-append">
-              <button  class="btn btn-primary" type="button" (click)="searchUser()">Buscar</button>
-            </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Ingrese un nombre de usuario" [(ngModel)]="searchText">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" (click)="searchUser()">Buscar</button>
           </div>
+        </div>
       </div>
     </div>
-  </div>
   
+    <div *ngIf="userData">
+      <p class="text-center">Usuarios encontrados: {{ totalUsers }}</p>
+      <ul class="list-group">
+        <li *ngFor="let user of userData.items" class="list-group-item">
+          <span class="font-weight-bold">{{ user.login }}</span> - ID: {{ user.id }}
+        </li>
+      </ul>
+  
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-4">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" href="#" (click)="previousPage()" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <span class="page-link">Pagina {{ currentPage }}</span>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage * itemsPerPage >= totalUsers">
+            <a class="page-link" href="#" (click)="nextPage()" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
