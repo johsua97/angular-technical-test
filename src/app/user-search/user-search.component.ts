@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { UserDetailsComponent } from '../user-details/user-details.component';
-import { FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -31,14 +31,18 @@ export class UserSearchComponent {
 
   searchUser() {
     if (!this.searchText) {
-      throw new Error('El nombre de usuario es requerido.');
+      Swal.fire('Error', 'El nombre de usuario es requerido.', 'error');
+      return;
     }
+  
     if (!this.minLengthValidator(this.searchText)) {
-      throw new Error('El nombre de usuario debe tener al menos 4 caracteres.');
+      Swal.fire('Error', 'El nombre de usuario debe tener al menos 4 caracteres.', 'error');
+      return;
     }
-
+  
     if (!this.wordValidator(this.searchText)) {
-      throw new Error('La palabra "raspberry" está prohibida en el nombre de usuario.');
+      Swal.fire('Error', 'La palabra "raspberry" está prohibida en el nombre de usuario.', 'error');
+      return;
     }
 
     this.http.get(`https://api.github.com/search/users?q=${this.searchText}&page=${this.currentPage}&per_page=${this.itemsPerPage}`)
