@@ -17,8 +17,8 @@
     <div *ngIf="userData">
       <p class="text-center">Usuarios encontrados: {{ totalUsers }}</p>
       <ul class="list-group">
-        <li *ngFor="let user of userData.items" class="list-group-item">
-          <span class="font-weight-bold">{{ user.login }}</span> - ID: {{ user.id }}
+        <li *ngFor="let user of userData.items" class="list-group-item justify-content-center">
+            <a href="javascript:void(0)" (click)="openModal(user)">{{ user.login }} - ID: {{ user.id }}</a>
         </li>
       </ul>
   

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
   selector: 'app-user-search',
@@ -13,9 +15,9 @@ export class UserSearchComponent {
   itemsPerPage: number = 10;
   totalUsers: number = 0;
   loading: boolean = false;
+  bsModalRef!: BsModalRef;
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private modalService: BsModalService) { }
 
    searchUser() {
     if (this.searchText) {
@@ -39,6 +41,15 @@ export class UserSearchComponent {
       this.currentPage++;
       this.searchUser();
     }
+  }
+
+  openModal(user: any) {
+    this.bsModalRef = this.modalService.show(UserDetailsComponent, {
+      initialState: {
+        userId: user.id,
+        userLogin: user.login
+      }
+    });
   }
 
 }

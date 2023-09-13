@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 import { UserSearchComponent } from './user-search/user-search.component';
 
 @NgModule({
@@ -19,7 +21,8 @@ import { UserSearchComponent } from './user-search/user-search.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
