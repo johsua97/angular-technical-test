@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-sm-10 offset-lg-3 offset-md-2 offset-sm-1">
+        <div class="d-flex align-items-center mb-3">
+          <i class="fa fa-github fa-4x mr-5" style="margin-right: 20px;"></i>
+          <p class="my-0" style="font-size: 30px; font-family: 'Your-Font-Family';">Buscador de usuarios de GitHub</p>
+        </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Ingrese un nombre de usuario" [(ngModel)]="searchText">
+            <div class="input-group-append">
+              <button  class="btn btn-primary" type="button" (click)="searchUser()">Buscar</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
